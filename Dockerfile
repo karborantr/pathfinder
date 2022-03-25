@@ -3,7 +3,7 @@
 ########################################
 FROM rust:1.59-alpine AS rust-builder
 
-RUN apk add --no-cache musl-dev gcc openssl-dev
+RUN apk add --no-cache musl-dev gcc openssl-dev libgit2-dev
 
 WORKDIR /usr/src/pathfinder
 
@@ -25,6 +25,7 @@ RUN DEPENDENCY_LAYER=1 RUSTFLAGS='-L/usr/lib -Ctarget-feature=-crt-static' cargo
 
 # Compile the actual libraries and binary now
 COPY . .
+COPY ./.git /usr/src/pathfinder
 
 # Mark these for re-compilation
 RUN touch crates/pathfinder/src/lib.rs
