@@ -20,7 +20,10 @@ def main():
     # stderr should not be used
 
     if not check_cairolang_version():
-        print("unexpected cairo-lang version: please reinstall dependencies to upgrade.", flush=True)
+        print(
+            "unexpected cairo-lang version: please reinstall dependencies to upgrade.",
+            flush=True,
+        )
         sys.exit(1)
 
     with sqlite3.connect(db) as connection:
