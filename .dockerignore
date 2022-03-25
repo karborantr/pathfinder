@@ -1,1 +1,7 @@
 Dockerfile
+# rust temporary files
+target/
+# database files
+*.sqlite
+# compressed database dump files
+*.zst
