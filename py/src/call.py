@@ -28,6 +28,7 @@ def main():
 
         connection.execute("BEGIN")
         if not check_schema(connection):
+            print("unexpected database schema version at start.", flush=True)
             sys.exit(1)
         connection.rollback()
 
